@@ -49,16 +49,7 @@ The api-gateway also allows to configure endpoint for backend microservice. This
 ## How to invoke backend microservice through API Gateway?
 Suppose we have customer service running at **http://localhost:8080/customer/** and authentication service running on **http://localhost:8091/auth/**.
 First step is to register endpoints of these microservices with api-gateway. So we will use following REST request to register endpoints.
-1. **Register endpoint for customer service**
-   ```
-   POST http://localhost:8090/routes
-   {
-    	"name": "customer-service",
-    	"uri": "http://localhost:8080/",
-    	"path": "/customers/**"
-   }   
-   ```
-3. **Register endpoint for auth service**
+1. **Register endpoint for auth service**
    Note: The auth service has two endpoints - /auth and /users.
    POST http://localhost:8090/auth
    {
@@ -78,10 +69,10 @@ First step is to register endpoints of these microservices with api-gateway. So 
     ```
     POST http://localhost:8090/users
     {
-      "firstName": "Yogesh",
-      "lastName": "Kshatriya",
-      "email": "2022mt93005@wilp.bits-pilani.ac.in",
-      "username": "yogeshk",
+      "firstName": "Chinmay",
+      "lastName": "Ramdasi",
+      "email": "2022mt93008@wilp.bits-pilani.ac.in",
+      "username": "chinmay1231",
       "password": "pass123",
       "role": "user",
       "enabled": true
@@ -91,7 +82,7 @@ First step is to register endpoints of these microservices with api-gateway. So 
    ```
    POST http://localhost:8090/auth
    {
-      "username": "yogeshk",
+      "username": "chinmay1231",
       "password": "pass123"
    }
    ```
@@ -104,10 +95,5 @@ eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsImxhc3ROYW1lIjoiQWRtaW4iLCJyb2x
 
 5. **Access backend microservice with JWT token**
    We will fire request to list all customers. If this request is without JWT token, you will receive error message saying 'Authorization header is missing'.
-   So let us fire request to list all customers with JWT token.
-    ```
-    GET http://localhost:8090/customers
-    Authorization: eyJhbGciOiJIUzI1NiJ9...<stripped since it is very long>
-    ```
    
    
